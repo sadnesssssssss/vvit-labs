@@ -1,0 +1,30 @@
+CREATE TABLE groups(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name VARCHAR(255) NOT NULL,
+description VARCHAR(255)
+);
+
+CREATE TABLE student (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name VARCHAR(255),
+group_id int NOT NULL REFERENCES groups (id)
+);
+
+CREATE TABLE students_marks(
+student_id INTEGER PRIMARY KEY REFERENCES student (id),
+math_mark_average FLOAT,
+physics_mark_average FLOAT,
+python_mark_average FLOAT
+);
+
+INSERT INTO groups (name, description) VALUES ("БВТ2301", "лучшая группа(потому что тут я)");
+INSERT INTO groups (name, description) VALUES ("БВТ2302", "лучшая группа(потому что тут я)");
+INSERT INTO groups (name, description) VALUES ("БВТ2303", "лучшая группа(потому что тут я)");
+
+INSERT INTO student (name, group_id) VALUES ("Глыгало Егор", (SELECT id from groups WHERE name = "БВТ2302"));
+INSERT INTO student (name, group_id) VALUES ("Иванов Иван", (SELECT id from groups WHERE name = "БВТ2301"));
+INSERT INTO student (name, group_id) VALUES ("Павлов Павел", (SELECT id from groups WHERE name = "БВТ2303"));
+
+INSERT INTO students_marks VALUES ((SELECT id FROM student WHERE name = "Глыгало Егор"), 2.5, 4.0, 5.0);
+INSERT INTO students_marks VALUES ((SELECT id FROM student WHERE name = "Иванов Иван"), 3.5, 2.5, 2.0);
+INSERT INTO students_marks VALUES ((SELECT id FROM student WHERE name = "Павлов Павел"), 2.3, 4.1, 2.5);
