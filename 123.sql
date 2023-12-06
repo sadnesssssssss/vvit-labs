@@ -29,12 +29,6 @@ CREATE TABLE worker (
     position VARCHAR(255) NOT NULL 
 );
 
-INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'СЫТО ПЬЯНО'), 'РАЙАН ГОСЛИНГ', 600000, 'ВОДИТЕЛЬ');
-INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'ДИКСИ'), 'ПАТРИК БЕЙТМАН', 5, 'БИЗНЕСМЕН');
-INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'АШАН'), 'ТАЙЛЕР ДЁРДЕН', 35, 'БЕЗРАБОТНЫЙ');
-INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'АШАН'), 'ЛЁШКА БОДАНЮК', 20000000000, 'ЛЕГЕНДА');
-INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'КБ'), 'СЭМ СУЛЕК', 2000000, 'ФИТНЕС ТРЕНЕР');
-
 INSERT INTO shop VALUES('СЫТО ПЬЯНО', 500000);
 INSERT INTO shop VALUES('КБ', 1000000);
 INSERT INTO shop VALUES('АШАН', 450000);
@@ -47,6 +41,13 @@ INSERT INTO product (name, quantity) VALUES('ПИВО ВИШНЁВОЕ', 200);
 INSERT INTO product (name, quantity) VALUES('ЧАПМАН ВИШНЁВЫЙ', 500);
 INSERT INTO product (name, quantity) VALUES('ЧАПМАН ШОКОЛАДНЫЙ', 100);
 INSERT INTO product (name, quantity) VALUES('КЛУБНИЧНЫЙ ЛИКЁР', 100);
+
+
+INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'СЫТО ПЬЯНО'), 'РАЙАН ГОСЛИНГ', 600000, 'ВОДИТЕЛЬ');
+INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'ДИКСИ'), 'ПАТРИК БЕЙТМАН', 5, 'БИЗНЕСМЕН');
+INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'АШАН'), 'ТАЙЛЕР ДЁРДЕН', 35, 'БЕЗРАБОТНЫЙ');
+INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'АШАН'), 'ЛЁШКА БОДАНЮК', 20000000000, 'ЛЕГЕНДА');
+INSERT INTO worker (shop_id, name, salary, position) VALUES((SELECT id FROM shop WHERE name = 'КБ'), 'СЭМ СУЛЕК', 2000000, 'ФИТНЕС ТРЕНЕР');
 
 INSERT INTO warehouse VALUES((SELECT id FROM shop WHERE name = 'СЫТО ПЬЯНО'), (SELECT id FROM product WHERE name = 'ПИВО CВЕТЛОЕ'), 20);
 INSERT INTO warehouse VALUES((SELECT id FROM shop WHERE name = 'СЫТО ПЬЯНО'), (SELECT id FROM product WHERE name = 'ПИВО ТЁМНОЕ'), 30);
