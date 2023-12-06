@@ -69,16 +69,16 @@ INSERT INTO warehouse VALUES((SELECT id FROM shop WHERE name = 'ДИКСИ'), (S
 
 SELECT * FROM worker WHERE name != 'ДЖОКЕР' ORDER BY shop_id, position;
 
-SELECT shop_id, product_id, sum(quantity) as количество_пива from warehouse where product_id < 4 GROUP BY shop_id ORDER BY количество_пива DESC;
+SELECT shop_id, product_id, sum(quantity) as product_product_count from warehouse where product_id < 4 GROUP BY shop_id ORDER BY product_product_count DESC;
 
-SELECT shop.name, sum(warehouse.quantity) as count_tovars
+SELECT shop.name, sum(warehouse.quantity) as product_count_tovars
 FROM warehouse, shop 
 WHERE warehouse.product_id < 4 AND shop.id = warehouse.shop_id
 GROUP BY shop.name 
-ORDER BY count_pivo DESC;
+ORDER BY product_product_count DESC;
 
-SELECT product.name, sum(warehouse.quanity) as count
+SELECT product.name, sum(warehouse.quanity) as product_count
 FROM product, warehouse
 WHERE product.id = warehouse.product_id AND product.name LIKE '%ПИВО%'
 GROUP BY product.name 
-ORDER BY count DESC;
+ORDER BY product_count DESC;
