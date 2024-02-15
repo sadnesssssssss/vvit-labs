@@ -16,14 +16,6 @@ titanic_data = titanic_data.drop(
     columns=["PassengerId", "Name", "SibSp", "Parch", "Ticket", "Fare", "Cabin", "Embarked"], axis=1)
 median_age = titanic_data['Age'].median()
 titanic_data['Age'].fillna(median_age, inplace=True)
-isMale = []
-isFemale = []
-for sex in titanic_data["Sex"].values:
-    gender = (0 if sex == 'male' else 1)
-    isMale.append(1 - gender)
-    isFemale.append(gender)
-titanic_data["isMale"] = isMale
-titanic_data["isFemale"] = isFemale
-titanic_data.drop(columns=["Sex"], axis=1)
+changed_data = pd.get_dummies(titanic_data, drop_first=True)
 print("Обновленные данные:")
-print(titanic_data.head())
+print(changed_data.head())
